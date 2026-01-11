@@ -1,5 +1,5 @@
 <template>
-   <svg style="block-size: 0" xmlns="http://www.w3.org/2000/svg" version="1.1">
+   <!-- <svg style="block-size: 0" xmlns="http://www.w3.org/2000/svg" version="1.1">
       <defs>
       	<filter id="noise-big">
       	   <feTurbulence id="turbulence" baseFrequency="0.02" numOctaves="3" result="noise" seed="1"/>
@@ -67,24 +67,33 @@
          </g>
       </svg>
       <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nulla a veniam necessitatibus, quibusdam ratione distinctio quasi laudantium ipsam eius aspernatur cupiditate odio repellendus quod, illum possimus recusandae? Nihil, quas. Eaque!</p>
-   </main>
+   </main> -->
 
-   <section class="bg-[#101010]">
-      <canvas class="p-canvas-webgl" id = "canvas-webgl" > </canvas>
+   <ClientOnly>
+    <hero />
+   </ClientOnly>
+
+   <!--<section class="bg-[#101010]">-->
+  <section class="bg-black">
+      <ClientOnly>
+        <canvas class="p-canvas-webgl" id = "canvas-webgl" > </canvas>
+      </ClientOnly>
    </section>
 </template>
 
 <style css>
+
 body {
 	overflow-x: hidden;
-	background-color: #101010;
+	/*background-color: #101010;*/
+  background-color: black;
 }
 
 .p-canvas-webgl {
-	z-index: -1;
+	z-index: 0;
 }
 
-
+/*
 :root {
   --color-fore: #fff;
   --color-back: #101010;
@@ -230,7 +239,7 @@ pre code {
   font-weight: normal;
 }
 
-/* layouts */
+/* layouts =====
 
 .l-box {
   padding: var(--box-padding, var(--s-s));
@@ -277,14 +286,14 @@ pre code {
   margin-block-end: var(--s-m);
 }
 
-/* components */
+/* components =====
 
 .c-logo {
   max-inline-size: 12rem;
   margin-block-end: var(--s-s);
 }
 
-/* basic utilities */
+/* basic utilities =====
 
 .u-glyph-icon {
   font-family: var(--font-special);
@@ -292,7 +301,7 @@ pre code {
   font-weight: normal;
 }
 
-/* form controls */
+/* form controls =====
 
 input, button {
   cursor: pointer;
@@ -363,7 +372,7 @@ button:hover {
   justify-content: flex-end;
 }
 
-/* animations */
+/* animations =====
 
 [class*="u-wave"] {
   border: 0;
@@ -431,12 +440,15 @@ h1, .u-squiggle, main > img, main > svg {
     filter: url("#noise-3");
   }
 }
+  */
 </style>
 
 <script>
 import * as THREE from 'three';
 
 onNuxtReady(() => {
+  //const THREE = await import('three');
+
 	class Plane {
 		constructor() {
 			this.uniforms = {
@@ -506,7 +518,8 @@ onNuxtReady(() => {
 		camera.lookAt(new THREE.Vector3(0, 28, 0));
 
 		scene.add(plane.mesh);
-		scene.background = new THREE.Color("#101010");
+		//scene.background = new THREE.Color("#101010");
+    scene.background = new THREE.Color("#000000");
 
 		on();
 		resizeWindow();
