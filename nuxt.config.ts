@@ -14,6 +14,10 @@ export default defineNuxtConfig({
 		'@nuxt/hints',
 		'@nuxt/image',
 		'@nuxt/scripts',
+		'@nuxt/fonts',
 		'@nuxt/ui'
-	]
+	],
+	fonts: {
+		provider: 'google',
+  	},
 })
